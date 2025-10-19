@@ -1,10 +1,10 @@
-function Informativa(){
+function Informativa() {
     document.getElementById("root").innerHTML = `
         <div class="c-informativa">
             <div class="c-info-header">
-                <img src="https://images.wikidexcdn.net/mwuploads/wikidex/5/52/latest/20210907044555/Logo_Pok%C3%A9mon_Presents.png" alt="Pokemon Presents" class="c-presents-logo">
-               </br>
-                </div>
+                <img src="https://images.wikidexcdn.net/mwuploads/wikidex/5/52/latest/20210907044555/Logo_Pok%C3%A9mon_Presents.png" 
+                     alt="Pokemon Presents" class="c-presents-logo">
+            </div>
             
             <div class="c-info-content">
                 <div class="c-info-card">
@@ -33,8 +33,8 @@ function Informativa(){
             </div>
 
             <div class="c-info-footer">
-                <p>App con información de <strong>1025 pokemones</strong></p>
-                <p class="c-info-api">Datos proporcionados por <strong>PokéAPI</strong>⚡</p>
+                <p>App con información de <strong>1025 pokémon</strong></p>
+                <p class="c-info-api">Datos proporcionados por <strong>PokéAPI</strong> ⚡</p>
             </div>
         </div>
     `;

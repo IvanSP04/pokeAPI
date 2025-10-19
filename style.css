@@ -1,3 +1,668 @@
-body{
- background-color: aqua;
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #FF6B6B 0%, #FFD93D 25%, #6BCF7F 75%, #4ECDC4 100%);
+    min-height: 100vh;
+    color: #2d3436;
+}
+
+/* Navigation con Logo */
+nav {
+    background: linear-gradient(135deg, #FF6B6B 0%, #FFE66D 100%);
+    padding: 1.5rem 2rem;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    border-bottom: 5px solid #2d3436;
+}
+
+.c-nav-container {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+    justify-content: center;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.c-nav-logo {
+    width: 80px;
+    height: 80px;
+    object-fit: contain;
+    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
+    animation: bounce 2s ease-in-out infinite;
+    flex-shrink: 0;
+}
+
+@keyframes bounce {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+.c-nav-buttons {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+nav button {
+    background: white;
+    color: #2d3436;
+    border: 4px solid #2d3436;
+    padding: 0.9rem 1.8rem;
+    border-radius: 50px;
+    cursor: pointer;
+    font-weight: 700;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 6px 0 #2d3436;
+    position: relative;
+    top: 0;
+}
+
+nav button:hover {
+    background: #FFE66D;
+    transform: translateY(-3px);
+    box-shadow: 0 9px 0 #2d3436;
+}
+
+nav button:active {
+    transform: translateY(3px);
+    box-shadow: 0 3px 0 #2d3436;
+}
+
+/* Container */
+#root {
+    max-width: 1400px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+}
+
+/* Buscador */
+.c-buscador {
+    width: 100%;
+    max-width: 700px;
+    padding: 1.2rem 2rem;
+    font-size: 1.2rem;
+    font-weight: 600;
+    border: 5px solid #2d3436;
+    border-radius: 50px;
+    box-shadow: 0 8px 0 #2d3436;
+    margin: 2rem auto;
+    display: block;
+    background: white;
+    color: #2d3436;
+}
+
+.c-buscador:focus {
+    outline: none;
+    background: #FFE66D;
+}
+
+.c-buscador::placeholder {
+    color: #636e72;
+}
+
+/* Filtros de tipo */
+.c-filtros {
+    display: flex;
+    gap: 0.8rem;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 2rem 0;
+}
+
+.c-filtros button {
+    padding: 0.7rem 1.5rem;
+    border: 4px solid #2d3436;
+    background: white;
+    color: #2d3436;
+    border-radius: 30px;
+    cursor: pointer;
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    transition: all 0.2s ease;
+    box-shadow: 0 4px 0 #2d3436;
+    position: relative;
+    top: 0;
+}
+
+.c-filtros button:hover {
+    background: #6BCF7F;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 0 #2d3436;
+}
+
+.c-filtros button:active {
+    transform: translateY(2px);
+    box-shadow: 0 2px 0 #2d3436;
+}
+
+/* Lista de Pokémon */
+.c-lista {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 2rem;
+    padding: 1rem;
+}
+
+.c-lista-pokemon {
+    background: white;
+    border: 5px solid #2d3436;
+    border-radius: 20px;
+    padding: 1.5rem;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 8px 0 #2d3436;
+    position: relative;
+    top: 0;
+}
+
+.c-lista-pokemon:hover {
+    background: #FFE66D;
+    transform: translateY(-8px);
+    box-shadow: 0 16px 0 #2d3436;
+}
+
+.c-lista-pokemon:active {
+    transform: translateY(4px);
+    box-shadow: 0 4px 0 #2d3436;
+}
+
+.c-lista-pokemon img {
+    width: 100%;
+    height: auto;
+    max-height: 120px;
+    object-fit: contain;
+    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2));
+}
+
+.c-lista-pokemon p:first-of-type {
+    color: #FF6B6B;
+    font-weight: 800;
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+.c-lista-pokemon p:last-of-type {
+    margin-top: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: #2d3436;
+    font-size: 1rem;
+}
+
+/* Detalle del Pokémon */
+.c-detalle {
+    background: white;
+    border: 6px solid #2d3436;
+    border-radius: 30px;
+    padding: 3rem;
+    max-width: 900px;
+    margin: 2rem auto;
+    box-shadow: 0 12px 0 #2d3436;
+    text-align: center;
+}
+
+.c-detalle img {
+    width: 350px;
+    height: 350px;
+    object-fit: contain;
+    margin-bottom: 1.5rem;
+    filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 0.3));
+}
+
+.c-detalle h1 {
+    font-size: 3rem;
+    text-transform: uppercase;
+    font-weight: 800;
+    background: linear-gradient(135deg, #FF6B6B, #FFE66D);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 1rem;
+    text-shadow: 3px 3px 0 rgba(45, 52, 54, 0.1);
+}
+
+.c-stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 1.2rem;
+    margin: 2.5rem 0;
+}
+
+.c-stat-item {
+    background: linear-gradient(135deg, #FF6B6B 0%, #FFE66D 100%);
+    color: white;
+    padding: 1.5rem;
+    border-radius: 15px;
+    font-weight: 700;
+    border: 4px solid #2d3436;
+    box-shadow: 0 6px 0 #2d3436;
+    position: relative;
+    top: 0;
+    transition: all 0.2s ease;
+}
+
+.c-stat-item:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 9px 0 #2d3436;
+}
+
+.c-stat-label {
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.3);
+}
+
+.c-stat-value {
+    font-size: 2rem;
+    margin-top: 0.5rem;
+    font-weight: 800;
+    text-shadow: 3px 3px 0 rgba(0, 0, 0, 0.3);
+}
+
+.c-tipos {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    margin: 1.5rem 0;
+    flex-wrap: wrap;
+}
+
+.c-tipo {
+    padding: 0.8rem 2rem;
+    border-radius: 30px;
+    color: white;
+    font-weight: 800;
+    text-transform: uppercase;
+    border: 4px solid #2d3436;
+    box-shadow: 0 4px 0 #2d3436;
+    font-size: 1.1rem;
+    letter-spacing: 1px;
+}
+
+.c-tipo.normal { background: #A8A878; }
+.c-tipo.fighting { background: #C03028; }
+.c-tipo.flying { background: #A890F0; }
+.c-tipo.poison { background: #A040A0; }
+.c-tipo.ground { background: #E0C068; }
+.c-tipo.rock { background: #B8A038; }
+.c-tipo.bug { background: #A8B820; }
+.c-tipo.ghost { background: #705898; }
+.c-tipo.steel { background: #B8B8D0; }
+.c-tipo.fire { background: #F08030; }
+.c-tipo.water { background: #6890F0; }
+.c-tipo.grass { background: #78C850; }
+.c-tipo.electric { background: #F8D030; }
+.c-tipo.psychic { background: #F85888; }
+.c-tipo.ice { background: #98D8D8; }
+.c-tipo.dragon { background: #7038F8; }
+.c-tipo.dark { background: #705848; }
+.c-tipo.fairy { background: #EE99AC; }
+.c-tipo.stellar { background: #4A90E2; }
+.c-tipo.unknown { background: #68A090; }
+
+.c-favorito-btn {
+    background: linear-gradient(135deg, #FF6B6B 0%, #FF8E53 100%);
+    color: white;
+    border: 5px solid #2d3436;
+    padding: 1.2rem 3rem;
+    border-radius: 50px;
+    font-size: 1.3rem;
+    font-weight: 800;
+    cursor: pointer;
+    margin-top: 2rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 8px 0 #2d3436;
+    position: relative;
+    top: 0;
+    text-transform: uppercase;
+}
+
+.c-favorito-btn:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 0 #2d3436;
+}
+
+.c-favorito-btn:active {
+    transform: translateY(4px);
+    box-shadow: 0 4px 0 #2d3436;
+}
+
+/* Sección Informativa */
+.c-informativa {
+    background: white;
+    border: 6px solid #2d3436;
+    border-radius: 30px;
+    padding: 3rem;
+    max-width: 1200px;
+    margin: 2rem auto;
+    box-shadow: 0 12px 0 #2d3436;
+}
+
+.c-info-header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.c-presents-logo {
+    max-width: 500px;
+    width: 100%;
+    height: auto;
+    filter: drop-shadow(0 6px 12px rgba(0, 0, 0, 0.2));
+}
+
+.c-info-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    margin: 2rem 0;
+}
+
+.c-info-card {
+    background: linear-gradient(135deg, #FF6B6B 0%, #FFE66D 100%);
+    color: white;
+    padding: 2.5rem;
+    border-radius: 20px;
+    text-align: center;
+    transition: transform 0.3s ease;
+    border: 5px solid #2d3436;
+    box-shadow: 0 8px 0 #2d3436;
+    position: relative;
+    top: 0;
+}
+
+.c-info-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 16px 0 #2d3436;
+}
+
+.c-info-icon {
+    font-size: 4rem;
+    margin-bottom: 1rem;
+    filter: drop-shadow(2px 2px 0 rgba(0, 0, 0, 0.3));
+}
+
+.c-info-card h2 {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.2);
+}
+
+.c-info-card p {
+    line-height: 1.8;
+    font-weight: 600;
+    font-size: 1.05rem;
+    text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.1);
+}
+
+.c-info-footer {
+    text-align: center;
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 4px solid #2d3436;
+}
+
+.c-info-footer p {
+    margin: 0.8rem 0;
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: #2d3436;
+}
+
+.c-info-api {
+    background: linear-gradient(135deg, #6BCF7F 0%, #4ECDC4 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-weight: 800 !important;
+    font-size: 1.5rem !important;
+}
+
+/* Capturados */
+.c-capturados-header {
+    text-align: center;
+    background: white;
+    padding: 2.5rem;
+    border-radius: 25px;
+    margin-bottom: 2rem;
+    box-shadow: 0 10px 0 #2d3436;
+    border: 5px solid #2d3436;
+}
+
+.c-contador {
+    font-size: 3rem;
+    font-weight: 800;
+    background: linear-gradient(135deg, #FF6B6B, #FFE66D);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 1.5rem;
+}
+
+.c-capturar-btn {
+    background: linear-gradient(135deg, #6BCF7F 0%, #4ECDC4 100%);
+    color: white;
+    border: 5px solid #2d3436;
+    padding: 1.2rem 2.5rem;
+    border-radius: 50px;
+    font-size: 1.2rem;
+    font-weight: 800;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 8px 0 #2d3436;
+    position: relative;
+    top: 0;
+    text-transform: uppercase;
+}
+
+.c-capturar-btn:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 0 #2d3436;
+}
+
+.c-capturar-btn:active {
+    transform: translateY(4px);
+    box-shadow: 0 4px 0 #2d3436;
+}
+
+.c-unpoke {
+    background: rgba(255, 255, 255, 0.4);
+    border: 4px solid #2d3436;
+    border-radius: 12px;
+    padding: 1rem;
+    text-align: center;
+    color: #2d3436;
+    font-weight: 800;
+    min-height: 90px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 0 rgba(0, 0, 0, 0.3);
+}
+
+.c-mios-pokemon {
+    background: white;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    position: relative;
+    top: 0;
+}
+
+.c-mios-pokemon:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 0 #2d3436;
+    background: #FFE66D;
+}
+
+.c-mios-pokemon:active {
+    transform: translateY(2px);
+    box-shadow: 0 2px 0 #2d3436;
+}
+
+.c-un_aleatorio {
+    animation: aparecer 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+@keyframes aparecer {
+    0% {
+        opacity: 0;
+        transform: scale(0) rotate(-180deg);
+    }
+    50% {
+        transform: scale(1.2) rotate(10deg);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1) rotate(0deg);
+    }
+}
+
+/* Empty state */
+.c-empty {
+    text-align: center;
+    padding: 4rem;
+    background: white;
+    border-radius: 25px;
+    margin: 2rem auto;
+    max-width: 600px;
+    box-shadow: 0 10px 0 #2d3436;
+    border: 5px solid #2d3436;
+}
+
+.c-empty-icon {
+    font-size: 6rem;
+    margin-bottom: 1.5rem;
+    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2));
+}
+
+.c-empty h2 {
+    background: linear-gradient(135deg, #FF6B6B, #FFE66D);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 1rem;
+    font-size: 2rem;
+    font-weight: 800;
+}
+
+.c-empty p {
+    color: #636e72;
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+/* Footer */
+.c-footer {
+    text-align: center;
+    color: white;
+    padding: 2rem;
+    margin-top: 3rem;
+    font-weight: 700;
+    font-size: 1.1rem;
+    text-shadow: 3px 3px 0 rgba(0, 0, 0, 0.3);
+}
+
+/* Título de sección */
+.c-titulo-seccion {
+    color: white;
+    text-align: center;
+    margin: 2rem 0;
+    font-size: 3rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    text-shadow: 5px 5px 0 #2d3436;
+    letter-spacing: 2px;
+}
+
+.c-btn-volver {
+    display: block;
+    margin: 1.5rem auto;
+    padding: 1rem 2.5rem;
+    background: white;
+    border: 5px solid #2d3436;
+    border-radius: 50px;
+    cursor: pointer;
+    font-weight: 800;
+    font-size: 1.1rem;
+    color: #2d3436;
+    box-shadow: 0 6px 0 #2d3436;
+    position: relative;
+    top: 0;
+    transition: all 0.2s ease;
+}
+
+.c-btn-volver:hover {
+    background: #FFE66D;
+    transform: translateY(-3px);
+    box-shadow: 0 9px 0 #2d3436;
+}
+
+.c-btn-volver:active {
+    transform: translateY(3px);
+    box-shadow: 0 3px 0 #2d3436;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    nav {
+        padding: 1rem;
+    }
+
+    .c-nav-container {
+        gap: 1rem;
+    }
+
+    .c-nav-logo {
+        width: 60px;
+        height: 60px;
+    }
+
+    nav button {
+        padding: 0.7rem 1.2rem;
+        font-size: 0.9rem;
+    }
+
+    .c-lista {
+        grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+        gap: 1.5rem;
+    }
+
+    .c-detalle {
+        padding: 2rem;
+    }
+
+    .c-detalle img {
+        width: 250px;
+        height: 250px;
+    }
+
+    .c-detalle h1 {
+        font-size: 2rem;
+    }
+
+    .c-titulo-seccion {
+        font-size: 2rem;
+    }
 }

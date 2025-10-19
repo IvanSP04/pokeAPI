@@ -1,32 +1,36 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="style.css">
     <title>PokeEJ</title>
 </head>
 <body>
     <nav>
-        <button onclick="Home()">Home</button>
-        <button onclick="Favoritos()">Favoritos</button>
-        <button onclick="conexion()">conexion</button>
-        <button onclick="informativa()">informativa</button>
-        <button onclick="Pokemon()">Pokemon</button>
-        <button onclick="Original_Capturados()">Original/Capturados</button>
-        <br><br>
-        </nav>
+        <div class="c-nav-container">
+            <img src="/Imagenes/Pikarasta.png" 
+                 alt="Pikachu" class="c-nav-logo">
+            <div class="c-nav-buttons">
+                <button onclick="Home()">🏠 Home</button>
+                <button onclick="Informativa()">ℹ️ Info</button>
+                <button onclick="Favoritos()">❤️ Favoritos</button>
+                <button onclick="Capturados()">📦 Capturados</button>
+            </div>
+        </div>
+    </nav>
 
-    <div id="root">
+    <div id="root"></div>
+
+    <div class="c-footer">
+        <p>⚡ Creado por Ivan Sterling | Pokédex 2025 ⚡</p>
     </div>
-    <h1>Ivan Sterling</h1>
-    <script src="Conexión.js"></script>
+
+    <script src="Conexion.js"></script>
     <script src="Home.js"></script>
     <script src="Detalle.js"></script>
     <script src="Informativa.js"></script>
-    <script src="Pokemon.js"></script>
     <script src="Favoritos.js"></script>
     <script src="Capturados.js"></script>
-
 </body>
 </html>
